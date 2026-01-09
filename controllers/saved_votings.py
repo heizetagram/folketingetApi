@@ -22,7 +22,7 @@ async def get_saved_votings(Authorization: Optional[str] = Header(None)):
 
     try:
         params = {
-            "user_id": user_id
+            "p_user_id": user_id
         }
 
         response = fetch_user_saved_votings(params)
