@@ -19,10 +19,11 @@ async def get_saved_votings(Authorization: Optional[str] = Header(None)):
         raise HTTPException(status_code=401, detail="Header missing or malformed.")
 
     user_id = get_uid_from_token(Authorization)
+    print(user_id)
 
     try:
         params = {
-            "user_id": user_id
+            "p_user_id": user_id
         }
 
         response = fetch_user_saved_votings(params)
@@ -64,11 +65,15 @@ async def delete_voting(payload: VoteRequest, Authorization: Optional[str] = Hea
 
     user_id = get_uid_from_token(Authorization)
 
+    print(user_id)
+    print(payload.voting_id)
+
     try:
         params = {
             "p_user_id": user_id,
             "p_afstemning_id": payload.voting_id
         }
+        print(payload.voting_id)
 
         delete_user_saved_voting(params)
 
